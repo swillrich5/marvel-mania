@@ -10,6 +10,11 @@ const CharacterResults = ({ characterName }) => {
     const [ totalResults, setTotalResults] = useState(0);
     const [loading, setLoading] = useState(false);
     const [characters, setCharacters] = useState([]);
+    const [page, setPage] = useState(1);
+
+    const updatePage = () => {
+
+    }
 
 
     useEffect(() => {
@@ -42,7 +47,7 @@ const CharacterResults = ({ characterName }) => {
             }
         }
         getCharacters();
-    }, [characterName]);
+    }, [characterName, totalResults]);
 
     if (loading) {
         return <Spinner />
@@ -65,7 +70,7 @@ const CharacterResults = ({ characterName }) => {
                     </div>
                 )}
                 </div>
-                <Pagination totalResults={totalResults} />
+                <Pagination totalResults={totalResults} page={page}/>
             </div>
 
         )
