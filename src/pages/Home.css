@@ -1,0 +1,24 @@
+body {
+    background-image: url('../images/marvel-background.jpg');
+    min-width: 100%;
+    min-height: 100%;
+    color:darkgray;
+}
+
+.jumbotron {
+    padding-top: 20px;
+    color: rgb(116, 109, 109);
+    background-color: rgb(241, 237, 237);
+    margin-top: 50px;
+    min-height: 100%;
+}
+
+p {
+    text-align:left;
+    margin-top: 20px;
+}
+
+img {
+    max-height: 288px;
+    max-width: 218px;
+}

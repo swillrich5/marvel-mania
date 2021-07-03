@@ -1,0 +1,44 @@
+nav {
+    background-color: rgb(241, 237, 237);
+}
+
+a {
+    color: rgb(116, 109, 109);
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+Link:visited {
+    text-decoration: none;
+}
+
+Link:link {
+    text-decoration: none;
+}
+
+Link:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+Link:active {
+    text-decoration: none;
+}
+
+h2, h3 {
+    margin-right: 10px;
+
+}
+
+
+.heading {
+    color: rgb(116, 109, 109);
+    background-color: rgb(241, 237, 237);
+}
+
+.heading:hover {
+    font-weight: 500;
+    text-decoration: none;
+}
