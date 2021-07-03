@@ -6,13 +6,11 @@ const SearchCharacters = () => {
     const [characterName, setCharacterName] = useState("");
     const [timeToSearch, setTimeToSearch] = useState(false);
 
-
     const searchCharacters = async (e) => {
         e.preventDefault();
         if (characterName !== "") {
             setTimeToSearch(true);
         }
-
     }
 
 
