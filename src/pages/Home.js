@@ -18,7 +18,7 @@ const Home = () => {
                 </p>
                 <Link className="row justify-content-center" to='/characters'>
                     <div className="card col-md-12 col-lg-3 justify-content-center shadow-lg bg-light rounded">
-                        <img className="card-img-top mx-auto pt-3" src={captainamerica} alt="Spock"/>
+                        <img className="card-img-top mx-auto pt-3 character-img" src={captainamerica} alt="Captain America"/>
                         <div className="card-body">
                             <p className="card-text text-center">Characters</p>
                         </div>
