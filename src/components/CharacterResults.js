@@ -95,7 +95,7 @@ const CharacterResults = ({ characterName }) => {
                     </div>
                 )}
                 </div>
-                <Pagination totalResults={totalResults} currentPage={currentPage} onNextPage={onNextPage}/>
+                <Pagination totalResults={totalResults} currentPage={currentPage} numPages={numPages} onNextPage={onNextPage}/>
             </div>
 
         )
