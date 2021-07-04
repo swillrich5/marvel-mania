@@ -11,9 +11,20 @@ const CharacterResults = ({ characterName }) => {
     const [loading, setLoading] = useState(false);
     const [characters, setCharacters] = useState([]);
     const [page, setPage] = useState(1);
+    const [numPages, setNumPages] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(20);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [offset, setOffset] = useState(0);
 
-    const updatePage = () => {
-
+    const onNextPage = (direction) => {
+        if (direction > 0) {
+            console.log("We're going to the next page of results");
+            setOffset(offset + itemsPerPage);
+            
+        }
+        else {
+            console.log("We're going to the previous page of results");
+        }
     }
 
 
@@ -70,7 +81,7 @@ const CharacterResults = ({ characterName }) => {
                     </div>
                 )}
                 </div>
-                <Pagination totalResults={totalResults} page={page}/>
+                <Pagination totalResults={totalResults} page={page} onNextPage={onNextPage}/>
             </div>
 
         )
