@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from './Spinner';
@@ -20,17 +21,12 @@ const CharacterResults = ({ characterName }) => {
             console.log("We're going to the next page of results");
             setOffset(offset + itemsPerPage);
             setCurrentPage(currentPage + 1);
-            if (currentPage >= numPages) {
-                // we eventually want to disable the next button
-            }
         }
         else {
             console.log("We're going to the previous page of results");
             if (currentPage > 1) {
                 setCurrentPage(currentPage - 1);
                 setOffset(offset - itemsPerPage);
-            }
-            if (+currentPage === 1) {
             }
         }
     }
@@ -85,8 +81,9 @@ const CharacterResults = ({ characterName }) => {
                                     <img className="pl-4 col-5" src={character.thumbnail.path + '/portrait_small.jpg'} alt="" />
                                     <h5 className="card-title col-7 mt-2 pl-0">{character.name}</h5>
                                 </div>
+                                {/* next commented line adds the character description which is too much for this view */}
                                 {/* <p className="card-subtitle scroll mb-2">{character.description}</p> */}
-                                {/* <Link to={`/character/${character.id}`} className='btn btn-dark btn-sm my-2'>More</Link> */}
+                                <Link to={`/character/${character.id}`} className='btn btn-dark btn-sm my-2'>More</Link>
                             </div>
                         </div>
                     </div>
