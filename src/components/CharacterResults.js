@@ -10,7 +10,6 @@ const CharacterResults = ({ characterName }) => {
     const [totalResults, setTotalResults] = useState(0);
     const [loading, setLoading] = useState(false);
     const [characters, setCharacters] = useState([]);
-    const [page, setPage] = useState(1);
     const [numPages, setNumPages] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +17,6 @@ const CharacterResults = ({ characterName }) => {
 
     const onNextPage = (direction) => {
         if (direction > 0) {
-            // we eventually want to make sure the prev button is enabled
             console.log("We're going to the next page of results");
             setOffset(offset + itemsPerPage);
             setCurrentPage(currentPage + 1);
@@ -28,13 +26,11 @@ const CharacterResults = ({ characterName }) => {
         }
         else {
             console.log("We're going to the previous page of results");
-            // we eventually want to make sure the prev button is enabled
             if (currentPage > 1) {
                 setCurrentPage(currentPage - 1);
                 setOffset(offset - itemsPerPage);
             }
             if (+currentPage === 1) {
-                // we eventually want to disable the prev button
             }
         }
     }
@@ -65,6 +61,7 @@ const CharacterResults = ({ characterName }) => {
                 setTotalResults(res.data.data.total);
                 setNumPages(Math.ceil(res.data.data.total / itemsPerPage));
                 console.log("totalResults = " + totalResults);
+                setItemsPerPage(20);
                 setLoading(false);
             }
             catch(err) {
@@ -72,7 +69,7 @@ const CharacterResults = ({ characterName }) => {
             }
         }
         getCharacters();
-    }, [characterName, totalResults, offset]);
+    }, [characterName, totalResults, itemsPerPage, offset]);
 
     if (loading) {
         return <Spinner />

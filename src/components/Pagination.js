@@ -1,21 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Pagination = ({totalResults, currentPage, numPages, onNextPage}) => {
     
-    const [prevDisabled, setPrevDisabled] = useState(false);
-    const [nextDisabled, setNextDisabled] = useState(false);
-
     const nextPage = () => {
         onNextPage(1);
-        
     }
 
     const prevPage = () => {
         onNextPage(-1);
-        setPrevDisabled(false);
-        if (+currentPage === 1) {
-            setPrevDisabled(true);
-        }
     }
 
     return (
