@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pagination = ({totalResults, page, onNextPage}) => {
+const Pagination = ({totalResults, currentPage, onNextPage}) => {
     
 
     const nextPage = () => {
@@ -15,7 +15,7 @@ const Pagination = ({totalResults, page, onNextPage}) => {
         <div>
             <h3>Pagination</h3>
             <p className="lead">There are {totalResults} total results</p>
-            <p className="lead">We're on page {page}</p>
+            <p className="lead">We're on page {currentPage}</p>
             <div className="row">
                 <button className="btn btn-primary mr-1" onClick={prevPage}>Previous</button>
                 <button className="btn btn-primary" onClick={nextPage}>Next</button>

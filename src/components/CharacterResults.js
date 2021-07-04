@@ -7,7 +7,7 @@ import Pagination from './Pagination';
 
 const CharacterResults = ({ characterName }) => {
 
-    const [ totalResults, setTotalResults] = useState(0);
+    const [totalResults, setTotalResults] = useState(0);
     const [loading, setLoading] = useState(false);
     const [characters, setCharacters] = useState([]);
     const [page, setPage] = useState(1);
@@ -18,12 +18,24 @@ const CharacterResults = ({ characterName }) => {
 
     const onNextPage = (direction) => {
         if (direction > 0) {
+            // we eventually want to make sure the prev button is enabled
             console.log("We're going to the next page of results");
             setOffset(offset + itemsPerPage);
-            
+            setCurrentPage(currentPage + 1);
+            if (currentPage >= numPages) {
+                // we eventually want to disable the next button
+            }
         }
         else {
             console.log("We're going to the previous page of results");
+            // we eventually want to make sure the prev button is enabled
+            if (currentPage > 1) {
+                setCurrentPage(currentPage - 1);
+                setOffset(offset - itemsPerPage);
+            }
+            if (+currentPage === 1) {
+                // we eventually want to disable the prev button
+            }
         }
     }
 
@@ -43,13 +55,15 @@ const CharacterResults = ({ characterName }) => {
             console.log(hash);
 
             try {
-                const URL = characterURL + "apikey=" + process.env.REACT_APP_PUBLIC_KEY + "&ts=" + ts + "&hash=" + hash + "&nameStartsWith=" + characterName;
+                const URL = characterURL + "apikey=" + process.env.REACT_APP_PUBLIC_KEY + "&ts=" + ts + 
+                    "&hash=" + hash + "&nameStartsWith=" + characterName + "&offset=" + offset;
                 console.log(URL);
                 setLoading(true);
                 const res = await axios.get(URL);
                 console.log(res.data);
                 setCharacters(res.data.data.results);
                 setTotalResults(res.data.data.total);
+                setNumPages(Math.ceil(res.data.data.total / itemsPerPage));
                 console.log("totalResults = " + totalResults);
                 setLoading(false);
             }
@@ -58,7 +72,7 @@ const CharacterResults = ({ characterName }) => {
             }
         }
         getCharacters();
-    }, [characterName, totalResults]);
+    }, [characterName, totalResults, offset]);
 
     if (loading) {
         return <Spinner />
@@ -81,7 +95,7 @@ const CharacterResults = ({ characterName }) => {
                     </div>
                 )}
                 </div>
-                <Pagination totalResults={totalResults} page={page} onNextPage={onNextPage}/>
+                <Pagination totalResults={totalResults} currentPage={currentPage} onNextPage={onNextPage}/>
             </div>
 
         )
