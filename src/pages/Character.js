@@ -64,7 +64,6 @@ const Character = ({ match }) => {
                     </div>
                 </div>
             </div>
-
         )
     } else {
         return (<Spinner />)
