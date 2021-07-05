@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from '../components/Spinner';
-import '../App.css';
 import './Home.css';
+import './CharacterComic.css';
 
 const CharacterComics = ({ match }) => {
 
@@ -52,9 +52,9 @@ const CharacterComics = ({ match }) => {
         return (
             <div className="container space-background">
             <div className="jumbotron">
-                <Link to='/comic/:id' className="row">
+                <div className="row">
                         {comics.map(comic =>
-                            <div key={comic.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
+                            <Link to={`/comic/${comic.id}`} key={comic.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
                                 <div className="card mb-3">
                                     <div className="card-body">
                                         <div className='row'>
@@ -64,17 +64,16 @@ const CharacterComics = ({ match }) => {
                                         {comic.dates.map(comicDate =>
                                             <div key={comicDate.type} className="row ml-3">
                                                     <div>
-                                                    {/* <p className="card-text">{comicDate.type}: {new Date(comicDate.date).toString()}</p> */}
+
                                                     <p className="card-text my-1">{comicDate.type}: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>
                                                     </div>
                                             </div>
                                         )}
-                                        {/* <Link to={`/character/${character.id}`} className='btn btn-dark btn-sm my-2'>More</Link> */}
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         )}
-                    </Link>
+                    </div>
                 </div>
         </div>
         )    
