@@ -53,13 +53,14 @@ const CharacterComics = ({ match }) => {
                                         <img className="pl-4 col-5" src={comic.thumbnail.path + '/portrait_small.jpg'} alt="" />
                                         <h5 className="card-title col-7 mt-2 pl-0">{comic.title}</h5>
                                     </div>
-                                    <div className="row">
-                                        {comic.dates.map(comicDate =>
-                                            <div className="row d-block" key={comicDate.type}>
-                                                <h6>{comicDate.type}:</h6>
-                                            </div>
-                                        )}
-                                    </div>
+                                    {comic.dates.map(comicDate =>
+                                        <div key={comicDate.type} className="row ml-3">
+                                                <div>
+                                                {/* <p className="card-text">{comicDate.type}: {new Date(comicDate.date).toString()}</p> */}
+                                                <p className="card-text my-1">{comicDate.type}: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>
+                                                </div>
+                                        </div>
+                                    )}
                                     {/* <Link to={`/character/${character.id}`} className='btn btn-dark btn-sm my-2'>More</Link> */}
                                 </div>
                             </div>
