@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import '../App.css';
@@ -28,7 +29,7 @@ const CharacterComics = ({ match }) => {
             try {
                 const URL = comicsURL + "?apikey=" + PUBLIC_KEY + 
                     "&ts=" + ts + "&hash=" + hash + "&limit=100" +
-                    "&orderBy=onsaleDate";
+                    "&orderBy=-onsaleDate";
                 console.log(URL);
                 const res = await axios.get(URL);
                 console.log(res.data.data.results);
@@ -44,7 +45,7 @@ const CharacterComics = ({ match }) => {
     return (
         <div className="container space-background">
         <div className="jumbotron">
-            <div className="row">
+            <Link to='/comic/:id' className="row">
                     {comics.map(comic =>
                         <div key={comic.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
                             <div className="card mb-3">
@@ -66,7 +67,7 @@ const CharacterComics = ({ match }) => {
                             </div>
                         </div>
                     )}
-                </div>
+                </Link>
             </div>
     </div>
     )
