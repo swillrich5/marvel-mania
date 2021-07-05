@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import './Character.css';
@@ -48,6 +49,8 @@ const Character = ({ match }) => {
                             <img src={character.thumbnail.path + '/portrait_incredible.jpg'} alt="" />
                         </div>
                         <div className="col-4">
+                            <Link to={`/charactercomics/${character.id}`} className="my-1">Comics: {character.comics.available}</Link>
+                            {/* <Link to={`/comics/${character.comics.collectionURI}`} className="my-1">Comics: {character.comics.available}</Link> */}
                             <p className="my-1">Comics: {character.comics.available}</p>
                             <p className="my-1">Events: {character.events.available}</p>
                             <p className="my-1">Series: {character.series.available}</p>
