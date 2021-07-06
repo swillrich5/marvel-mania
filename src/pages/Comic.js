@@ -55,7 +55,6 @@ const Comic = ({ match }) => {
             <div className="jumbotron">
                 <div className="row justify-content-center pb-3">
                     <div className="col-4">
-                        {/* { (`${comic.thumbnail.path}/portrait_incredible.${comic.thumbnail.extension}`) ? <img className="pl-4 col-5" src={`${comic.thumbnail.path}/portrait_incredible.${comic.thumbnail.extension}`} alt="" /> : ""} */}
                         <img src={pic} alt="pic"/>
                     </div>
                 </div>

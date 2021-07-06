@@ -13,7 +13,6 @@ const SearchCharacters = () => {
         }
     }
 
-
     const characterNameChangeHandler = (e) => {
         setCharacterName(e.target.value);
         console.log(e.target.value);
@@ -26,7 +25,7 @@ const SearchCharacters = () => {
                     <form id="search-form" className="col-lg-6 col-md-12">  
                         <h2>Search Marvel Characters</h2>
                         <div className="form-group form-inline row ml-5">
-                            <label htmlFor="characterName" className="space-right">Character Name: </label>
+                            <label htmlFor="characterName" className="space-right mr-1">Character Name: </label>
                             <input type="text" name={characterName} value={characterName} onChange={characterNameChangeHandler} className="form-control" id="character-name" />
                             <p>Search by either a full or partial character name</p>
                         </div>
