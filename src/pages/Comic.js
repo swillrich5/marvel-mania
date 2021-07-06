@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from '../components/Spinner';
@@ -10,6 +11,7 @@ const Comic = ({ match }) => {
     const [comic, setComic] = useState({});
     const [loading, setLoading] = useState(false);
     const [pic, setPic] = useState("");
+    const [characters, setCharacters] = useState([]);
 
 
     useEffect(() => {
@@ -38,6 +40,8 @@ const Comic = ({ match }) => {
                 console.log(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
                 setPic(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
                 setLoading(false);
+                setCharacters(res.data.data.results[0].characters.items);
+                console.log(res.data.data.results[0].characters.items);
             }
             catch(err) {
                 console.log(err);
@@ -45,7 +49,6 @@ const Comic = ({ match }) => {
         }
         getComicDetail();
     }, [match]);
-
 
     if (loading) {
         return <Spinner />
@@ -55,13 +58,24 @@ const Comic = ({ match }) => {
             <div className="jumbotron">
                 <div className="row justify-content-center pb-3">
                     <div className="col-4">
-                        <img src={pic} alt="pic"/>
+                        <img src={pic} className="shadow-lg bg-white rounded" alt="pic"/>
                     </div>
                 </div>
     
                 <div className="row justify-content-center">
                     <h4 className="text-center">{comic.title}</h4>
                     {comic.description && <p className="mx-5 mt-2">{comic.description}</p>}
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <h5 className="text-left">Characters in this issue:</h5>
+                        {characters.map(character =>
+                            <div key={character.name}className="my-0 py-0">
+                                {/* regular expression to get last part of URI which is the character ID */}
+                                <Link to={`/character/${/[^/]*$/.exec(character.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{character.name}</Link>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
