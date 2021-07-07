@@ -15,19 +15,17 @@ const Character = ({ match }) => {
         const getCharacterDetail = async () => {
 
             // build the API URL
-            const PUBLIC_KEY = '44a8206ec31c9148038b27a524cd4d19'; 
-            const PRIVATE_KEY = '99da415cadb94f78c184e179af91174166b332eb'; 
             const baseURL = "https://gateway.marvel.com/";
             const charactersEndpoint = "v1/public/characters/";
             let characterURL = baseURL + charactersEndpoint + match.params.id;
     
             const ts = Number(new Date());      // timestamp for hash
             const hash = md5.create();
-            hash.update(ts + PRIVATE_KEY + PUBLIC_KEY);
+            hash.update(ts + process.env.REACT_APP_PRIVATE_KEY + process.env.REACT_APP_PUBLIC_KEY);
             console.log(hash);
 
             try {
-                const URL = characterURL + "?apikey=" + PUBLIC_KEY + "&ts=" + ts + "&hash=" + hash;
+                const URL = characterURL + "?apikey=" + process.env.REACT_APP_PUBLIC_KEY + "&ts=" + ts + "&hash=" + hash;
                 console.log(URL);
                 const res = await axios.get(URL);
                 console.log(res.data.data.results[0]);
@@ -46,7 +44,7 @@ const Character = ({ match }) => {
                 <div className="jumbotron">
                     <div className="row justify-content-center pb-3">
                         <div className="col-4">
-                            <img src={character.thumbnail.path + '/portrait_incredible.jpg'} alt="" />
+                            <img src={character.thumbnail.path + '/portrait_incredible.jpg'} className="shadow-lg" alt="" />
                         </div>
                         <div className="col-4">
                             <Link to={`/charactercomics/${character.id}`} className="my-1">Comics: {character.comics.available}</Link>

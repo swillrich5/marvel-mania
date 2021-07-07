@@ -17,20 +17,18 @@ const CharacterComics = ({ match }) => {
         const getCharacterDetail = async () => {
 
             // build the API URL
-            const PUBLIC_KEY = '44a8206ec31c9148038b27a524cd4d19'; 
-            const PRIVATE_KEY = '99da415cadb94f78c184e179af91174166b332eb'; 
             const baseURL = "https://gateway.marvel.com/";
             const comicsEndpoint = "v1/public/characters/";
             let comicsURL = baseURL + comicsEndpoint + match.params.id + "/comics";
     
             const ts = Number(new Date());      // timestamp for hash
             const hash = md5.create();
-            hash.update(ts + PRIVATE_KEY + PUBLIC_KEY);
+            hash.update(ts + process.env.REACT_APP_PRIVATE_KEY + process.env.REACT_APP_PUBLIC_KEY);
             console.log(hash);
 
             try {
                 setLoading(true);
-                const URL = comicsURL + "?apikey=" + PUBLIC_KEY + 
+                const URL = comicsURL + "?apikey=" + process.env.REACT_APP_PUBLIC_KEY + 
                     "&ts=" + ts + "&hash=" + hash + "&limit=100" +
                     "&orderBy=-onsaleDate";
                 console.log(URL);
@@ -58,7 +56,7 @@ const CharacterComics = ({ match }) => {
                                 <div className="card mb-3">
                                     <div className="card-body">
                                         <div className='row'>
-                                            <img className="pl-4 col-5" src={comic.thumbnail.path + '/portrait_small.jpg'} alt="" />
+                                            <img className="pl-4 col-5 shadow-lg" src={comic.thumbnail.path + '/portrait_small.jpg'} alt="" />
                                             <h5 className="card-title col-7 mt-2 pl-0">{comic.title}</h5>
                                         </div>
                                         {comic.dates.map(comicDate =>
