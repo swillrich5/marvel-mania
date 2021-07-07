@@ -56,15 +56,14 @@ const CharacterComics = ({ match }) => {
                                 <div className="card mb-3">
                                     <div className="card-body">
                                         <div className='row'>
-                                            <img className="pl-4 col-5 shadow-lg" src={comic.thumbnail.path + '/portrait_small.jpg'} alt="" />
+                                            <img className="pl-4 col-5" src={comic.thumbnail.path + '/portrait_small.jpg'} alt="" />
                                             <h5 className="card-title col-7 mt-2 pl-0">{comic.title}</h5>
                                         </div>
                                         {comic.dates.map(comicDate =>
                                             <div key={comicDate.type} className="row ml-3">
-                                                    <div>
-
+                                                <div>
                                                     <p className="card-text my-1">{comicDate.type}: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>
-                                                    </div>
+                                                </div>
                                             </div>
                                         )}
                                     </div>

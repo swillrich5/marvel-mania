@@ -12,6 +12,7 @@ const Comic = ({ match }) => {
     const [loading, setLoading] = useState(false);
     const [pic, setPic] = useState("");
     const [characters, setCharacters] = useState([]);
+    const [variants, setVariants] = useState([]);
 
 
     useEffect(() => {
@@ -42,6 +43,7 @@ const Comic = ({ match }) => {
                 setLoading(false);
                 setCharacters(res.data.data.results[0].characters.items);
                 console.log(res.data.data.results[0].characters.items);
+                setVariants(res.data.data.results[0].variants);
             }
             catch(err) {
                 console.log(err);
@@ -67,13 +69,22 @@ const Comic = ({ match }) => {
                     {comic.description && <p className="mx-5 mt-2">{comic.description}</p>}
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col ml-5">
                         <h5 className="text-left">Characters in this issue:</h5>
                         {characters.map(character =>
-                            <div key={character.name}className="my-0 py-0">
+                            <ul key={character.name}className="my-0 py-0">
                                 {/* regular expression to get last part of URI which is the character ID */}
-                                <Link to={`/character/${/[^/]*$/.exec(character.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{character.name}</Link>
-                            </div>
+                                <li className="text-left"><Link to={`/character/${/[^/]*$/.exec(character.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{character.name}</Link></li>
+                            </ul>
+                        )}
+                    </div>
+                    <div className="col ml-5">
+                        <h5 className="text-left">Variant Covers:</h5>
+                        {variants.map(variant =>
+                            <ul key={variant.name}className="my-0 py-0">
+                                {/* regular expression to get last part of URI which is the character ID */}
+                                <li className="text-left"><Link to={`/comic/${/[^/]*$/.exec(variant.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{variant.name}</Link></li>
+                            </ul>
                         )}
                     </div>
                 </div>
