@@ -13,6 +13,7 @@ const Comic = ({ match }) => {
     const [pic, setPic] = useState("");
     const [characters, setCharacters] = useState([]);
     const [variants, setVariants] = useState([]);
+    const [prices, setPrices] = useState([]);
 
 
     useEffect(() => {
@@ -44,6 +45,7 @@ const Comic = ({ match }) => {
                 setCharacters(res.data.data.results[0].characters.items);
                 console.log(res.data.data.results[0].characters.items);
                 setVariants(res.data.data.results[0].variants);
+                setPrices(res.data.data.results[0].prices);
             }
             catch(err) {
                 console.log(err);
@@ -64,11 +66,11 @@ const Comic = ({ match }) => {
                     </div>
                 </div>
     
-                <div className="row justify-content-center">
+                <div className="row justify-content-center pb-3">
                     <h4 className="text-center">{comic.title}</h4>
                     {comic.description && <p className="mx-5 mt-2">{comic.description}</p>}
                 </div>
-                <div className="row">
+                <div className="row justify-content-center">
                     <div className="col ml-5">
                         <h5 className="text-left">Characters in this issue:</h5>
                         {characters.map(character =>
@@ -78,13 +80,21 @@ const Comic = ({ match }) => {
                             </ul>
                         )}
                     </div>
-                    <div className="col ml-5">
+                    <div className="col ml-2">
                         <h5 className="text-left">Variant Covers:</h5>
                         {variants.map(variant =>
                             <ul key={variant.name}className="my-0 py-0">
                                 {/* regular expression to get last part of URI which is the character ID */}
                                 <li className="text-left"><Link to={`/comic/${/[^/]*$/.exec(variant.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{variant.name}</Link></li>
                             </ul>
+                        )}
+                    </div>
+                    <div className="col ml-2">
+                        <h5 className="text-left">Pricing:</h5>
+                        {prices.map(price =>
+                            <div key={price.name}className="my-0 py-0">
+                                <p className="lead text-left">{price.type}: ${price.price}</p>
+                            </div>
                         )}
                     </div>
                 </div>
