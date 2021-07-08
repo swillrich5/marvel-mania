@@ -44,7 +44,7 @@ const Character = ({ match }) => {
                 <div className="jumbotron">
                     <div className="row justify-content-center pb-3">
                         <div className="col-4">
-                            <img src={character.thumbnail.path + '/portrait_incredible.jpg'} className="shadow-lg" alt="" />
+                            <img src={character.thumbnail.path + '/detail.jpg'} className="shadow-lg" alt="" />
                         </div>
                         <div className="col-4">
                             <Link to={`/charactercomics/${character.id}`} className="my-1">Comics: {character.comics.available}</Link>

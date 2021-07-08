@@ -20,7 +20,7 @@ p {
 
 img {
     max-height: 288px;
-    max-width: 218px;
+    max-width: 250px;
     transition: transform .5s; /* Animation */
 }
 
