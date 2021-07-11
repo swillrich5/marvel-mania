@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import captainamerica from '../images/characters.png';
+import events from '../images/events.png'
 
 const Home = () => {
 
@@ -16,14 +17,25 @@ const Home = () => {
                 </p>
                 <p className="lead mt-3 mb-5">My code repo for this app can be found in my <a  className="text-primary" href="https://github.com/swillrich5/marvel-api-browser">GitHub</a>.  Also, here's a link to my <a className="text-primary" href="https://www.scottwillrich.com/">portfolio site</a>.
                 </p>
-                <Link className="row justify-content-center" to='/characters'>
-                    <div className="card col-md-12 col-lg-3 justify-content-center shadow-lg bg-light rounded">
-                        <img className="card-img-top mx-auto pt-3 character-img" src={captainamerica} alt="Captain America"/>
-                        <div className="card-body">
-                            <p className="card-text text-center">Characters</p>
+                <div className="row">
+                    <Link className="justify-content-center ml-3" to='/characters'>
+                        <div className="card justify-content-center shadow-lg bg-light rounded">
+                            <img className="card-img-top mx-3 pt-3 character-img" src={captainamerica} alt="Captain America"/>
+                            <div className="card-body">
+                                <p className="card-text text-center">Characters</p>
+                            </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                    <Link className="justify-content-center ml-3" to='/characters'>
+                        <div className="card justify-content-center shadow-lg bg-light rounded">
+                            <img className="card-img-top mx-3 pt-3 character-img" src={events} alt="Captain America"/>
+                            <div className="card-body">
+                                <p className="card-text text-center">Events</p>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+
             </div>
         </div>
 
