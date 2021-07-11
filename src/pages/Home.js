@@ -26,7 +26,7 @@ const Home = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link className="justify-content-center ml-3" to='/characters'>
+                    <Link className="justify-content-center ml-3" to='/events'>
                         <div className="card justify-content-center shadow-lg bg-light rounded">
                             <img className="card-img-top mx-3 pt-3 character-img" src={events} alt="Captain America"/>
                             <div className="card-body">

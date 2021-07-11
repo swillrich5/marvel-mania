@@ -5,6 +5,7 @@ import SearchCharacters from './pages/SearchCharacters';
 import Character from './pages/Character';
 import CharacterComics from './pages/CharacterComics';
 import Comic from './pages/Comic';
+import EventList from './pages/EventList';
 import './App.css';
 
 
@@ -15,7 +16,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/characters' component={SearchCharacters}/>  
+          <Route exact path='/characters' component={SearchCharacters}/> 
+          <Route exact path='/events' component={EventList}/>   
           <Route path='/charactercomics/:id' component={CharacterComics} />
           <Route path='/character/:id' component={Character} />   
           <Route path='/comic/:id' component={Comic} />   
