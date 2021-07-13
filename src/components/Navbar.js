@@ -8,7 +8,7 @@ const Navbar = ({ icon, title }) => {
 
     return (
     <div>
-        <nav className="navbar navbar-expand-lg heading py-0">
+        <nav className="navbar navbar-expand-md navbar-light heading py-0">
             <Link to='/' ><h3 className="heading"><img src={logo} alt="Marvel Logo" /> {title} </h3></Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
