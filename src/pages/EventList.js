@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from '../components/Spinner';
@@ -50,6 +51,18 @@ const EventList = () => {
                         <h2 className="pb-3">Marvel Comics Events</h2>
                         <p className="lead text-center">Content Coming Soon!</p>
                     </div>
+                    {events.map(event =>
+                            <Link to={`/comic/${event.id}`} key={event.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
+                                <div className="card mb-3">
+                                    <div className="card-body">
+                                        <div className='row'>
+                                            <img className="pl-4 col-5" src={event.thumbnail.path + '/portrait_small.jpg'} alt="" />
+                                            <h5 className="card-title col-7 mt-2 pl-0">{event.title}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        )}
                 </div>
             </div>
         )
