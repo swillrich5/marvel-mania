@@ -49,7 +49,9 @@ const EventList = () => {
                 <div className="jumbotron">
                     <div className="row d-block justify-content-center">
                         <h2 className="pb-3">Marvel Comics Events</h2>
-                        <p className="lead text-center">Content Coming Soon!</p>
+                        <p className="lead text-justify px-5">For decades, especially in the 1960's, Marvel has been telling stories not only in standalone comics,
+                        but in major plotlines that span multiple comics.  Known as events, these have detailed the first appearance of characters, character deaths, as well as others
+                        important developments in the Marvel Comic Universe.  Here's a listing of Marvel's major events.</p>
                     </div>
                     {events.map(event =>
                             <Link to={`/comic/${event.id}`} key={event.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
