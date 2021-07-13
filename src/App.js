@@ -5,6 +5,7 @@ import SearchCharacters from './pages/SearchCharacters';
 import Character from './pages/Character';
 import CharacterComics from './pages/CharacterComics';
 import Comic from './pages/Comic';
+import Event from './pages/Event';
 import EventList from './pages/EventList';
 import SeriesList from './pages/SeriesList';
 import CreatorsList from './pages/CreatorsList';
@@ -25,6 +26,7 @@ function App() {
           <Route path='/charactercomics/:id' component={CharacterComics} />
           <Route path='/character/:id' component={Character} />   
           <Route path='/comic/:id' component={Comic} />   
+          <Route path='/event/:id' component={Event} />   
         </Switch>
       </div>
     </Router>

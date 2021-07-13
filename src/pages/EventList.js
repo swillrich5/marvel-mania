@@ -53,18 +53,20 @@ const EventList = () => {
                         but in major plotlines that span multiple comics.  Known as events, these have detailed the first appearance of characters, character deaths, as well as others
                         important developments in the Marvel Comic Universe.  Here's a listing of Marvel's major events.</p>
                     </div>
-                    {events.map(event =>
-                            <Link to={`/comic/${event.id}`} key={event.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
-                                <div className="card mb-3">
-                                    <div className="card-body">
-                                        <div className='row'>
-                                            <img className="pl-4 col-5" src={event.thumbnail.path + '/portrait_small.jpg'} alt="" />
-                                            <h5 className="card-title col-7 mt-2 pl-0">{event.title}</h5>
+                    <div className="row">
+                        {events.map(event =>
+                            <Link to={`/event/${event.id}`} key={event.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
+                                <div className="card mx-0 px-0 mb-3">
+                                    <div className="card-body mx-0 px-0">
+                                        <div className='row d-block align-content-center px-0 mx-0'>
+                                            <img className="mb-1 mx-0" src={event.thumbnail.path + '/portrait_uncanny.jpg'} alt="" />
+                                            <p className="text-center mt-2 pl-0">{event.title}</p>
                                         </div>
                                     </div>
                                 </div>
                             </Link>
                         )}
+                    </div>
                 </div>
             </div>
         )
