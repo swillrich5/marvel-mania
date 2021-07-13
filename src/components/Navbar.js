@@ -23,7 +23,9 @@ const Navbar = ({ icon, title }) => {
                         <div className="dropdown-menu heading" aria-labelledby="navbarDropdown">    
                             <Link to='/characters' className="dropdown-item"> Characters</Link>
                             {/* <a className="dropdown-item" href="javascript:void(0)">Character Search</a> */}
-                            <Link to='/characters' className="dropdown-item"> More Queries Coming Soon!</Link>
+                            <Link to='/events' className="dropdown-item">Events</Link>
+                            <Link to='/series' className="dropdown-item">Series</Link>
+                            <Link to='/creators' className="dropdown-item">Creators</Link>
                         </div>
                     </li>
                 </ul>
