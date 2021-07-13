@@ -69,6 +69,17 @@ if (loading) {
                         <h4 className="text-center">{event.title}</h4>
                         {event.description && <p className="mx-5 mt-2">{event.description}</p>}
                     </div>
+                    <div className="row">
+                        <div className="col">
+                            <h5 className="text-left">Characters in this event: </h5>
+                            {characters.map(character =>
+                                <ul key={character.name} className="my-0 py-0">
+                                    {/* regular expression to get last part of URI which is the character ID */}
+                                    <li className="text-left"><Link to={`/character/${/[^/]*$/.exec(character.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{character.name}</Link></li>
+                                </ul>    
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
         )
