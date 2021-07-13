@@ -4,6 +4,7 @@ import './Home.css';
 import captainamerica from '../images/characters.png';
 import events from '../images/events.png';
 import series from '../images/avengers.png';
+import creators from '../images/stan-lee.png';
 
 const Home = () => {
 
@@ -40,6 +41,14 @@ const Home = () => {
                             <img className="card-img-top mx-3 pt-3 character-img" src={series} alt="Series"/>
                             <div className="card-body">
                                 <p className="card-text text-center">Series</p>
+                            </div>
+                        </div>
+                    </Link>
+                    <Link className="justify-content-center ml-3" to='/creators'>
+                        <div className="card justify-content-center shadow-lg bg-light rounded">
+                            <img className="card-img-top mx-3 pt-3 character-img" src={creators} alt="Series"/>
+                            <div className="card-body">
+                                <p className="card-text text-center">Creators</p>
                             </div>
                         </div>
                     </Link>

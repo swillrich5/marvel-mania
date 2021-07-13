@@ -5,6 +5,10 @@ body {
     color:darkgray;
 }
 
+.container {
+    min-width: 70%;
+}
+
 .jumbotron {
     padding-top: 20px;
     color: rgb(116, 109, 109);
