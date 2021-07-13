@@ -4,15 +4,18 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from '../components/Spinner';
+import comicbook from '../images/comicbook.jpg';
+import characterimg from '../images/captain-marvel.jpg';
+import creators from '../images/stan-lee-comic-img.jpg';
 
 const Event = ({ match }) => {
 
     const [event, setEvent] = useState({});
     const [loading, setLoading] = useState(false);
     const [pic, setPic] = useState("");
-    const [characters, setCharacters] = useState([]);
-    const [variants, setVariants] = useState([]);
-    const [prices, setPrices] = useState([]);
+    const [comicCount, setComicCount] = useState(0);
+    const [characterCount, setCharacterCount] = useState(0);
+    const [creatorCount, setCreatorCount] = useState(0);
 
     useEffect(() => {
         const getEventDetail = async () => {
@@ -40,12 +43,11 @@ const Event = ({ match }) => {
                 console.log(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
                 setPic(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
                 setLoading(false);
-                setCharacters(res.data.data.results[0].characters.items);
                 console.log(res.data.data.results[0].characters.items);
-                console.log("Hello from space");
-                setVariants(res.data.data.results[0].variants);
-                setPrices(res.data.data.results[0].prices);
-            }
+                setComicCount(res.data.data.results[0].comics.available);
+                setCharacterCount(res.data.data.results[0].characters.available);
+                setCreatorCount(res.data.data.results[0].creators.available);
+             }
             catch(err) {
                 console.log(err);
             }
@@ -69,15 +71,30 @@ if (loading) {
                         <h4 className="text-center">{event.title}</h4>
                         {event.description && <p className="mx-5 mt-2">{event.description}</p>}
                     </div>
-                    <div className="row">
-                        <div className="col">
-                            <h5 className="text-left">Characters in this event: </h5>
-                            {characters.map(character =>
-                                <ul key={character.name} className="my-0 py-0">
-                                    {/* regular expression to get last part of URI which is the character ID */}
-                                    <li className="text-left"><Link to={`/character/${/[^/]*$/.exec(character.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{character.name}</Link></li>
-                                </ul>    
-                            )}
+                    <div className="row justify-content-center">
+                    <div className="col-3">
+                            <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
+                                <img src={characterimg} alt="" className="card-img-top" />
+                                <div className="card-body">
+                                    <h6 className="card-title bg-info text-white">Characters: {characterCount}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-3">
+                            <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
+                                <img src={comicbook} alt="" className="card-img-top" />
+                                <div className="card-body">
+                                    <h6 className="card-title bg-info text-white">Comics: {comicCount}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-3">
+                            <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
+                                <img src={creators} alt="" className="card-img-top" />
+                                <div className="card-body">
+                                    <h6 className="card-title bg-info text-white">Creators: {creatorCount} </h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
