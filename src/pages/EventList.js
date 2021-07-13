@@ -46,8 +46,9 @@ const EventList = () => {
         return (
             <div className="container space-background">
                 <div className="jumbotron">
-                    <div className="row justify-content-center">
-                        <h2>Marvel Comics Events</h2>
+                    <div className="row d-block justify-content-center">
+                        <h2 className="pb-3">Marvel Comics Events</h2>
+                        <p className="lead text-center">Content Coming Soon!</p>
                     </div>
                 </div>
             </div>
