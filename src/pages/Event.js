@@ -16,6 +16,7 @@ const Event = ({ match }) => {
     const [comicCount, setComicCount] = useState(0);
     const [characterCount, setCharacterCount] = useState(0);
     const [creatorCount, setCreatorCount] = useState(0);
+    const [collectionURI, setCollectionURI] = useState("");
 
     useEffect(() => {
         const getEventDetail = async () => {
@@ -47,6 +48,8 @@ const Event = ({ match }) => {
                 setComicCount(res.data.data.results[0].comics.available);
                 setCharacterCount(res.data.data.results[0].characters.available);
                 setCreatorCount(res.data.data.results[0].creators.available);
+                setCollectionURI(res.data.data.results[0].comics.collectionURI.replace("http://gateway.marvel.com/v1/public/","").split('/').join('+'));
+                console.log("URI = " + res.data.data.results[0].comics.collectionURI.replace("http://gateway.marvel.com/v1/public/","").split('/').join('+'));
              }
             catch(err) {
                 console.log(err);
@@ -72,14 +75,14 @@ if (loading) {
                         {event.description && <p className="mx-5 mt-2">{event.description}</p>}
                     </div>
                     <div className="row justify-content-center">
-                    <div className="col-3">
+                        <Link to={`/charactersbyuri/${collectionURI}`} className="col-3">
                             <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
                                 <img src={characterimg} alt="" className="card-img-top" />
                                 <div className="card-body">
                                     <h6 className="card-title bg-info text-white">Characters: {characterCount}</h6>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                         <div className="col-3">
                             <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
                                 <img src={comicbook} alt="" className="card-img-top" />

@@ -9,6 +9,7 @@ import Event from './pages/Event';
 import EventList from './pages/EventList';
 import SeriesList from './pages/SeriesList';
 import CreatorsList from './pages/CreatorsList';
+import CharactersByURI from './pages/CharactersByURI';
 import './App.css';
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/character/:id' component={Character} />   
           <Route path='/comic/:id' component={Comic} />   
           <Route path='/event/:id' component={Event} />   
+          <Route path='/charactersbyuri/:id' component={CharactersByURI} />
         </Switch>
       </div>
     </Router>
