@@ -12,8 +12,7 @@ const CharactersByURI = ({ match }) => {
 
     const [loading, setLoading] = useState(false);
     const [characters, setCharacters] = useState([]);
-    const [charactersReturned, setCharactersReturned] = useState(0);
-    const [totalCharacters, setTotalCharacters] = useState(0);
+    const [title, setTitle] = useState("");
 
 
     useEffect(() => {
@@ -23,7 +22,11 @@ const CharactersByURI = ({ match }) => {
         const getCharacters = async () => {
             const baseURL = "https://gateway.marvel.com/";
             // const charactersEndpoint = "v1/public/characters?";
-            const endpoint = 'v1/public/' + match.params.id.split('+').join('/');
+            setTitle(match.params.id.substring(match.params.id.lastIndexOf("+") + 1));
+            console.log(title);
+            const params = match.params.id.substring(0, match.params.id.lastIndexOf("+"));
+            console.log("params = " + params);
+            const endpoint = 'v1/public/' + params.split('+').join('/');
             let fullEndpoint = baseURL + endpoint;
 
             const ts = Number(new Date());      // timestamp for hash
@@ -41,8 +44,6 @@ const CharactersByURI = ({ match }) => {
                 const res = await axios.get(URL);
                 console.log(res.data.data);
                 setCharacters(res.data.data.results);
-                setCharactersReturned(res.data.data.count);
-                setTotalCharacters(res.data.data.total);
                 setLoading(false);
             }
             catch(err) {
@@ -50,7 +51,7 @@ const CharactersByURI = ({ match }) => {
             }
         }
         getCharacters();
-    }, [match]);
+    }, [match, title]);
 
     if (loading) {
         return <Spinner />
@@ -59,11 +60,11 @@ const CharactersByURI = ({ match }) => {
             <div className="container space-background">
             <div className="jumbotron">
                 <div className="row justify-content-around">
-                        <h3 className="">Hello!</h3>
+                        <h3 className="">{title} Characters</h3>
                 </div>
                 <div className="row">
                     {characters.map(character =>
-                        <div className="card mb3">
+                        <div className="card mb3" key={character.name}>
                             <div className="card-body">
                                 <div className="row">
                                     <p className="lead">{character.name}</p>
