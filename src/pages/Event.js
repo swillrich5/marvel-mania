@@ -48,8 +48,8 @@ const Event = ({ match }) => {
                 setComicCount(res.data.data.results[0].comics.available);
                 setCharacterCount(res.data.data.results[0].characters.available);
                 setCreatorCount(res.data.data.results[0].creators.available);
-                setCollectionURI(res.data.data.results[0].comics.collectionURI.replace("http://gateway.marvel.com/v1/public/","").split('/').join('+'));
-                console.log("URI = " + res.data.data.results[0].comics.collectionURI.replace("http://gateway.marvel.com/v1/public/","").split('/').join('+'));
+                setCollectionURI(res.data.data.results[0].characters.collectionURI.replace("http://gateway.marvel.com/v1/public/","").split('/').join('+'));
+                console.log("URI = " + res.data.data.results[0].characters.collectionURI.replace("http://gateway.marvel.com/v1/public/","").split('/').join('+'));
              }
             catch(err) {
                 console.log(err);

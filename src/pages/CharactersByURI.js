@@ -39,7 +39,7 @@ const CharactersByURI = ({ match }) => {
                 console.log(URL);
                 setLoading(true);
                 const res = await axios.get(URL);
-                console.log(res.data);
+                console.log(res.data.data);
                 setCharacters(res.data.data.results);
                 setCharactersReturned(res.data.data.count);
                 setTotalCharacters(res.data.data.total);
@@ -56,11 +56,24 @@ const CharactersByURI = ({ match }) => {
         return <Spinner />
     } else {
         return (
-
-            <div className="text-white bg-primary">
-                <h1> =============== This is Characters.js ================ </h1>
-                <p className="lead ml-5">{charactersReturned} of {totalCharacters} characters returned</p>
+            <div className="container space-background">
+            <div className="jumbotron">
+                <div className="row justify-content-around">
+                        <h3 className="">Hello!</h3>
+                </div>
+                <div className="row">
+                    {characters.map(character =>
+                        <div className="card mb3">
+                            <div className="card-body">
+                                <div className="row">
+                                    <p className="lead">{character.name}</p>
+                                </div>
+                            </div>
+                        </div>    
+                    )}
+                </div>
             </div>
+        </div>
         )
     }
 }
