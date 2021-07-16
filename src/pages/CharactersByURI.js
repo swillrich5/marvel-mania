@@ -12,6 +12,8 @@ const CharactersByURI = ({ match }) => {
 
     const [loading, setLoading] = useState(false);
     const [characters, setCharacters] = useState([]);
+    const [charactersReturned, setCharactersReturned] = useState(0);
+    const [totalCharacters, setTotalCharacters] = useState(0);
 
 
     useEffect(() => {
@@ -39,6 +41,8 @@ const CharactersByURI = ({ match }) => {
                 const res = await axios.get(URL);
                 console.log(res.data);
                 setCharacters(res.data.data.results);
+                setCharactersReturned(res.data.data.count);
+                setTotalCharacters(res.data.data.total);
                 setLoading(false);
             }
             catch(err) {
@@ -46,13 +50,19 @@ const CharactersByURI = ({ match }) => {
             }
         }
         getCharacters();
-    }, []);
+    }, [match]);
 
-    return (
-        <div>
-            <h1> =============== This is Characters.js ================ </h1>
-        </div>
-    )
+    if (loading) {
+        return <Spinner />
+    } else {
+        return (
+
+            <div className="text-white bg-primary">
+                <h1> =============== This is Characters.js ================ </h1>
+                <p className="lead ml-5">{charactersReturned} of {totalCharacters} characters returned</p>
+            </div>
+        )
+    }
 }
 
 export default CharactersByURI;
