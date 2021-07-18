@@ -4,7 +4,6 @@ import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from './Spinner';
 import Pagination from './Pagination';
-import '../pages/Home.css';
 
 
 const CharacterResults = ({ characterName }) => {
@@ -73,14 +72,18 @@ const CharacterResults = ({ characterName }) => {
     } else {
         return (
             <div>
-                <div className="row mt-5">
+                <div className="row equal">
                 {characters.map(character =>
-                    <Link to={`/character/${character.id}`} key={character.id} className='col mx-1 my-2' style={{width: "200px"}}>
-                        <div className="card character-img" style={{width: "200px"}}>
-                            <img className="card-img-top p-0" src={character.thumbnail.path + '/standard_xlarge.jpg'} alt="" />
-                                <div className="card-body">
-                                    <h5 className="card-title">{character.name}</h5>
+                    <Link to={`/character/${character.id}`} key={character.id} className='col-4 p-1 m-2 d-flex justify-content-around bg-info'>
+                        <div className="card bg-info card-block mb-3 border-0">
+                            <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0 border-0">
+                                <div className='card-img-top p-0 m-0 border-0'>
+                                    <img className="p-0 m-0 img-fluid border-0" src={character.thumbnail.path + '/landscape_xlarge.jpg'} alt="" />
                                 </div>
+                                <div className="">
+                                    <h5 className="card-title mt-2 p-0 border-0">{character.name}</h5>
+                                </div>
+                            </div>
                         </div>
                     </Link>
                 )}
