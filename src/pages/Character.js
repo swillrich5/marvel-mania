@@ -5,11 +5,21 @@ import md5 from 'js-md5';
 import './Character.css';
 import Spinner from '../components/Spinner';
 
+import comicbook from '../images/comicbook.jpg';
+import event from '../images/event-civil-war.jpg';
+import characterimg from '../images/captain-marvel.jpg';
+import creators from '../images/stan-lee-comic-img.jpg';
+
 
 const Character = ({ match }) => {
     console.log(match.params.id);
 
     const [character, setCharacter] = useState();
+    const [comicCount, setComicCount] = useState(0);
+    const [seriesCount, setSeriesCount] = useState(0);
+    const [creatorCount, setCreatorCount] = useState(0);
+    const [eventCount, setEventCount] = useState(0);
+    const [storyCount, setStoryCount] = useState(0);
 
     useEffect(() => {
         const getCharacterDetail = async () => {
@@ -30,6 +40,10 @@ const Character = ({ match }) => {
                 const res = await axios.get(URL);
                 console.log(res.data.data.results[0]);
                 setCharacter(res.data.data.results[0]);
+                setComicCount(res.data.data.results[0].comics.available);
+                setSeriesCount(res.data.data.results[0].series.available);
+                setEventCount(res.data.data.results[0].events.available);
+                setStoryCount(res.data.data.results[0].stories.available);
             }
             catch(err) {
                 console.log(err);
@@ -43,22 +57,36 @@ const Character = ({ match }) => {
             <div className="container space-background">
                 <div className="jumbotron">
                     <div className="row justify-content-center pb-3">
-                        <div className="col-4">
+                        <div className="col">
                             <img src={character.thumbnail.path + '/detail.jpg'} className="shadow-lg" alt="" />
                         </div>
-                        <div className="col-4">
-                            <Link to={`/charactercomics/${character.id}`} className="my-1">Comics: {character.comics.available}</Link>
-                            {/* <Link to={`/comics/${character.comics.collectionURI}`} className="my-1">Comics: {character.comics.available}</Link> */}
-                            <p className="my-1">Comics: {character.comics.available}</p>
-                            <p className="my-1">Events: {character.events.available}</p>
-                            <p className="my-1">Series: {character.series.available}</p>
-                            <p className="my-1">Stories: {character.stories.available}</p>
+                        <div className="col">
+                            <h4 className="mb-3">{character.name}</h4>
+                            <p className="mx-5 mt-2">{character.description}</p>
                         </div>
                     </div>
 
                     <div className="row justify-content-center">
-                        <h4>{character.name}</h4>
-                        <p className="mx-5 mt-2">{character.description}</p>
+                        <h4 className="mt-5">{character.name} Appearances</h4>
+                        <div className="row mt-5">
+                            <Link to={`/charactercomics/${character.id}`} className="col-3">
+                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
+                                    <img src={comicbook} alt="" className="card-img-top" />
+                                    <div className="card-body">
+                                        <h6 className="card-title bg-info text-white">Comics: {comicCount}</h6>
+                                    </div>
+                                </div>
+                            </Link>            
+                            <div className="col-3">
+                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
+                                    <img src={event} alt="" className="card-img-top" />
+                                    <div className="card-body">
+                                        <h6 className="card-title bg-info text-white">Events: {eventCount}</h6>
+                                    </div>
+                                </div>
+                            </div>                   
+                            <p className="my-1">Series: {seriesCount}</p>
+                        </div>
                     </div>
                 </div>
             </div>
