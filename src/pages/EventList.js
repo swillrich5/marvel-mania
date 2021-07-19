@@ -51,7 +51,8 @@ const EventList = () => {
                         <h2 className="pb-3">Marvel Comics Events</h2>
                         <p className="lead text-justify px-5">For decades, especially in the 1960's, Marvel has been telling stories not only in standalone comics,
                         but in major plotlines that span multiple comics.  Known as events, these have detailed the first appearance of characters, character deaths, as well as others
-                        important developments in the Marvel Comic Universe.  Here's a listing of Marvel's major events.</p>
+                        important developments in the Marvel Comic Universe.  They have ramifications for characters, franchises, and even shared universes.  Here's a 
+                        isting of Marvel's major events.</p>
                     </div>
                     <div className="row">
                         {events.map(event =>

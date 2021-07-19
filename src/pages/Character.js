@@ -8,7 +8,6 @@ import Spinner from '../components/Spinner';
 import comicbook from '../images/comicbook.jpg';
 import event from '../images/event-civil-war.jpg';
 import seriesimg from '../images/series-image.jpg';
-import creators from '../images/stan-lee-comic-img.jpg';
 
 
 const Character = ({ match }) => {
@@ -17,9 +16,7 @@ const Character = ({ match }) => {
     const [character, setCharacter] = useState();
     const [comicCount, setComicCount] = useState(0);
     const [seriesCount, setSeriesCount] = useState(0);
-    const [creatorCount, setCreatorCount] = useState(0);
     const [eventCount, setEventCount] = useState(0);
-    const [storyCount, setStoryCount] = useState(0);
 
     useEffect(() => {
         const getCharacterDetail = async () => {
@@ -43,7 +40,6 @@ const Character = ({ match }) => {
                 setComicCount(res.data.data.results[0].comics.available);
                 setSeriesCount(res.data.data.results[0].series.available);
                 setEventCount(res.data.data.results[0].events.available);
-                setStoryCount(res.data.data.results[0].stories.available);
             }
             catch(err) {
                 console.log(err);
