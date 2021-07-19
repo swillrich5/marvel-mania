@@ -7,7 +7,7 @@ import Spinner from '../components/Spinner';
 
 import comicbook from '../images/comicbook.jpg';
 import event from '../images/event-civil-war.jpg';
-import characterimg from '../images/captain-marvel.jpg';
+import seriesimg from '../images/series-image.jpg';
 import creators from '../images/stan-lee-comic-img.jpg';
 
 
@@ -56,19 +56,20 @@ const Character = ({ match }) => {
         return (
             <div className="container space-background">
                 <div className="jumbotron">
+                <h1 className="mb-3">{character.name}</h1>
                     <div className="row justify-content-center pb-3">
                         <div className="col">
                             <img src={character.thumbnail.path + '/detail.jpg'} className="shadow-lg" alt="" />
                         </div>
                         <div className="col">
-                            <h4 className="mb-3">{character.name}</h4>
                             <p className="mx-5 mt-2">{character.description}</p>
                         </div>
                     </div>
-
                     <div className="row justify-content-center">
                         <h4 className="mt-5">{character.name} Appearances</h4>
-                        <div className="row mt-5">
+                    </div>
+                    <div className="row justify-content-center">
+                        <div className="row mt-5 justify-content-center">
                             <Link to={`/charactercomics/${character.id}`} className="col-3">
                                 <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
                                     <img src={comicbook} alt="" className="card-img-top" />
@@ -85,7 +86,14 @@ const Character = ({ match }) => {
                                     </div>
                                 </div>
                             </div>                   
-                            <p className="my-1">Series: {seriesCount}</p>
+                            <div className="col-3">
+                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
+                                    <img src={seriesimg} alt="" className="card-img-top" />
+                                    <div className="card-body">
+                                        <h6 className="card-title bg-info text-white">Events: {seriesCount}</h6>
+                                    </div>
+                                </div>
+                            </div>   
                         </div>
                     </div>
                 </div>
