@@ -80,6 +80,7 @@ const Comic = ({ match }) => {
                             </ul>
                         )}
                     </div>
+
                     <div className="col ml-2">
                         <h5 className="text-left">Variant Covers:</h5>
                         {variants.map(variant =>
@@ -92,9 +93,12 @@ const Comic = ({ match }) => {
                     <div className="col ml-2">
                         <h5 className="text-left">Pricing:</h5>
                         {prices.map(price =>
-                            <div key={price.name}className="my-0 py-0">
-                                <p className="lead text-left">{price.type}: ${price.price}</p>
-                            </div>
+                            <ul key={price.name}className="my-0 py-0">
+                                { (price.type === "printPrice") &&  <li className="lead text-left">Print Price: ${price.price}</li> }
+                                { (price.type === "digitalPrice") &&  <li className="lead text-left">Digital Price: ${price.price}</li> }
+                                {/* I don't think there's another price type, but the below will catch it just in case */}
+                                { (price.type !== "digitalPrice" && price.type !== "printPrice") &&  <li className="lead text-left">Digital Price: ${price.price}</li> }
+                            </ul>
                         )}
                     </div>
                 </div>
