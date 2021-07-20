@@ -50,6 +50,8 @@ const CharacterComics = ({ match }) => {
         return (
             <div className="container space-background">
             <div className="jumbotron">
+                <h2>Comics by Character</h2>
+                <p className="lead text-center pb-3 px-5">All comics for the character are listed below in chronological order.</p>
                 <div className="row">
                         {comics.map(comic =>
                             <Link to={`/comic/${comic.id}`} key={comic.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
@@ -62,7 +64,12 @@ const CharacterComics = ({ match }) => {
                                         {comic.dates.map(comicDate =>
                                             <div key={comicDate.type} className="row ml-3">
                                                 <div>
-                                                    <p className="card-text my-1">{comicDate.type}: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>
+                                                    {/* conditional rendering allows only one of the four statements to show up on screen depening on the what type of date we're displaying */}
+                                                    { comicDate.type === "onsaleDate" && <p className="card-text my-1">On Sale Date: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+                                                    { comicDate.type === "focDate" && <p className="card-text my-1">Final Order Cutoff: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+                                                    { comicDate.type === "unlimitedDate" && <p className="card-text my-1">Marvel Unlimited Access: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+                                                    { comicDate.type === "digitalPurchaseDate" && <p className="card-text my-1">Digital Purchase: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+
                                                 </div>
                                             </div>
                                         )}
