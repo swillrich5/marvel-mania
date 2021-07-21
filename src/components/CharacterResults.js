@@ -32,6 +32,12 @@ const CharacterResults = ({ characterName }) => {
         }
     }
 
+    const onJumpToPage = (pageNum) => {
+        console.log("We're going to page " + pageNum);
+        setCurrentPage(pageNum);
+        setOffset((pageNum - 1) * itemsPerPage);
+    }
+
 
     useEffect(() => {
         const getCharacters = async () => {
@@ -85,7 +91,7 @@ const CharacterResults = ({ characterName }) => {
                     </Link>
                 )}
                 </div>
-                <Pagination totalResults={totalResults} currentPage={currentPage} numPages={numPages} onNextPage={onNextPage}/>
+                <Pagination totalResults={totalResults} currentPage={currentPage} numPages={numPages} onNextPage={onNextPage} onJumpToPage={onJumpToPage}/>
             </div>
 
         )
