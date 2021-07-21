@@ -13,3 +13,11 @@ a:hover {
     text-decoration: none;
     color: rgb(116, 109, 109);
 }
+
+.card {
+    width: 250px;
+}
+
+#small-font {
+    font-size: 12px;
+}

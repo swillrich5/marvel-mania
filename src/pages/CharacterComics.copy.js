@@ -54,19 +54,21 @@ const CharacterComics = ({ match }) => {
                 <p className="lead text-center pb-3 px-5">All comics for the character are listed below in chronological order.</p>
                 <div className="row">
                         {comics.map(comic =>
-                            <Link to={`/comic/${comic.id}`} key={comic.id} className='col justify-content-around'>
+                            <Link to={`/comic/${comic.id}`} key={comic.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
                                 <div className="card mb-3">
-                                    <img src={comic.thumbnail.path + '/portrait_uncanny.jpg'} alt=""  className="card-img-top"></img>
-                                    <div className="card-body mx-0 px-0 bg-dark text-white">
-                                        <h6 className="card-title font-weight-bold">{comic.title}</h6>
+                                    <div className="card-body">
+                                        <div className='row'>
+                                            <img className="pl-4 col-5" src={comic.thumbnail.path + '/portrait_small.jpg'} alt="" />
+                                            <h5 className="card-title col-7 mt-2 pl-0">{comic.title}</h5>
+                                        </div>
                                         {comic.dates.map(comicDate =>
                                             <div key={comicDate.type} className="row ml-3">
                                                 <div>
                                                     {/* conditional rendering allows only one of the four statements to show up on screen depening on the what type of date we're displaying */}
-                                                    { comicDate.type === "onsaleDate" && <p className="card-text my-0" id="small-font">On Sale Date: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
-                                                    { comicDate.type === "focDate" && <p className="card-text my-0" id="small-font">Final Order Cutoff: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
-                                                    { comicDate.type === "unlimitedDate" && <p className="card-text my-0" id="small-font">Marvel Unlimited Access: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
-                                                    { comicDate.type === "digitalPurchaseDate" && <p className="card-text my-0" id="small-font">Digital Purchase: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+                                                    { comicDate.type === "onsaleDate" && <p className="card-text my-1">On Sale Date: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+                                                    { comicDate.type === "focDate" && <p className="card-text my-1">Final Order Cutoff: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+                                                    { comicDate.type === "unlimitedDate" && <p className="card-text my-1">Marvel Unlimited Access: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
+                                                    { comicDate.type === "digitalPurchaseDate" && <p className="card-text my-1">Digital Purchase: {(comicDate.date.charAt(0) === '-') ? 'N/A' : new Date(comicDate.date).toLocaleDateString()}</p>}
 
                                                 </div>
                                             </div>
