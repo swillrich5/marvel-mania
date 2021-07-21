@@ -19,11 +19,16 @@ const Pagination = ({totalResults, currentPage, numPages, onNextPage, onJumpToPa
 
     const jumpToPage = () => {
         console.log("I'm jumping to page " + currentPageInput);
-        onJumpToPage(currentPageInput);
+
+        if (currentPageInput > numPages) {
+            onJumpToPage(numPages);
+        } else if (currentPageInput < 1) {
+            onJumpToPage(1);
+        } else {
+            onJumpToPage(currentPageInput);
+        }
 
     }
-
-
 
     const pageNumChangeHandler = (page) => {
         console.log("I'm in pageNumChangeHandler");
@@ -39,7 +44,7 @@ const Pagination = ({totalResults, currentPage, numPages, onNextPage, onJumpToPa
             <div className="justify-content-center mt-3 form-group row">
                 <button className="btn btn-primary mr-2 pt-2" onClick={jumpToPage}>Jump to Page </button>
                 <input type="text" className="form-control w-10" name="pageNumInput" id="pageNumInput" value={currentPageInput} onChange={e => pageNumChangeHandler(e.target.value)}/>
-                <label className="ml-2 pt-2">of {totalResults}</label>
+                <label className="ml-2 pt-2">of {numPages}</label>
 
             </div>
         </div>
