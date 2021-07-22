@@ -55,7 +55,7 @@ const CharacterComics = ({ match }) => {
                 <div className="row">
                         {comics.map(comic =>
                             <Link to={`/comic/${comic.id}`} key={comic.id} className='col justify-content-around'>
-                                <div className="card mb-3">
+                                <div className="card character-img mb-4">
                                     <img src={comic.thumbnail.path + '/portrait_uncanny.jpg'} alt=""  className="card-img-top"></img>
                                     <div className="card-body mx-0 px-0 bg-dark text-white">
                                         <h6 className="card-title font-weight-bold">{comic.title}</h6>

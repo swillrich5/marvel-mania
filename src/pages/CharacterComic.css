@@ -3,7 +3,7 @@
 
 } */
 
-.card-body:hover {
+.card:hover {
     transform: scale(1.1);
     transition: transform .5s; /* Animation */
     text-decoration: none;
