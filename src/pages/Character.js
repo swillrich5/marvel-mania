@@ -58,7 +58,7 @@ const Character = ({ match }) => {
                             <img src={character.thumbnail.path + '/detail.jpg'} className="shadow-lg" alt="" />
                         </div>
                         <div className="col">
-                            <p className="mx-5 mt-2">{character.description}</p>
+                            { (character.description) ? <p className="mx-5 mt-2">{character.description}</p> : <p className="mx-5 mt-2">Character description not available</p>}
                         </div>
                     </div>
                     <div className="row justify-content-center">
@@ -66,7 +66,7 @@ const Character = ({ match }) => {
                     </div>
                     <div className="row justify-content-center">
                         <div className="row mt-5 justify-content-center">
-                            <Link to={`/charactercomics/${character.id}`} className="col-3">
+                            <Link to={`/charactercomics/${character.id}`} className="col">
                                 <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
                                     <img src={comicbook} alt="" className="card-img-top" />
                                     <div className="card-body">
@@ -74,7 +74,7 @@ const Character = ({ match }) => {
                                     </div>
                                 </div>
                             </Link>            
-                            <div className="col-3">
+                            <div className="col">
                                 <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
                                     <img src={event} alt="" className="card-img-top" />
                                     <div className="card-body">
@@ -82,7 +82,7 @@ const Character = ({ match }) => {
                                     </div>
                                 </div>
                             </div>                   
-                            <div className="col-3">
+                            <div className="col">
                                 <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
                                     <img src={seriesimg} alt="" className="card-img-top" />
                                     <div className="card-body">
