@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from '../components/Spinner';
+import Pagination from '../components/Pagination';
 import './Home.css';
 import './CharacterComic.css';
 
@@ -12,6 +13,13 @@ const CharacterComics = ({ match }) => {
 
     const [comics, setComics] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    // useState variables for pagination
+    const [totalResults, setTotalResults] = useState(0);
+    const [numPages, setNumPages] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(25);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [offset, setOffset] = useState(0);
 
     useEffect(() => {
         const getCharacterDetail = async () => {
@@ -29,12 +37,16 @@ const CharacterComics = ({ match }) => {
             try {
                 setLoading(true);
                 const URL = comicsURL + "?apikey=" + process.env.REACT_APP_PUBLIC_KEY + 
-                    "&ts=" + ts + "&hash=" + hash + "&limit=100" +
+                    "&ts=" + ts + "&hash=" + hash + "&limit=25" + "&offset=" + offset +
                     "&orderBy=-onsaleDate";
                 console.log(URL);
                 const res = await axios.get(URL);
+                console.log(res.data.data);
                 console.log(res.data.data.results);
                 setComics(res.data.data.results);
+                setTotalResults(res.data.data.total);
+                setNumPages(Math.ceil(res.data.data.total / itemsPerPage));
+                setItemsPerPage(25);
                 setLoading(false);
             }
             catch(err) {
@@ -42,7 +54,31 @@ const CharacterComics = ({ match }) => {
             }
         }
         getCharacterDetail();
-    }, [match.params.id]);
+    }, [match, totalResults, itemsPerPage, offset]);
+
+
+
+    const onNextPage = (direction) => {
+        if (direction > 0) {
+            console.log("We're going to the next page of results");
+            setOffset(offset + itemsPerPage);
+            setCurrentPage(currentPage + 1);
+        }
+        else {
+            console.log("We're going to the previous page of results");
+            if (currentPage > 1) {
+                setCurrentPage(currentPage - 1);
+                setOffset(offset - itemsPerPage);
+            }
+        }
+    }
+
+    const onJumpToPage = (pageNum) => {
+        console.log("We're going to page " + pageNum);
+        setCurrentPage(pageNum);
+        setOffset((pageNum - 1) * itemsPerPage);
+    }
+
 
     if (loading) {
         return <Spinner />
@@ -76,6 +112,7 @@ const CharacterComics = ({ match }) => {
                             </Link>
                         )}
                     </div>
+                    <Pagination totalResults={totalResults} currentPage={currentPage} numPages={numPages} onNextPage={onNextPage} onJumpToPage={onJumpToPage}/>
                 </div>
         </div>
         )    
