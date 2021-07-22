@@ -52,41 +52,41 @@ const Character = ({ match }) => {
         return (
             <div className="container space-background">
                 <div className="jumbotron">
-                <h1 className="mb-3">{character.name}</h1>
-                    <div className="row justify-content-center pb-3">
-                        <div className="col">
+                    <h1 className="mt-3 mb-4">{character.name}</h1>
+                    <div className="row pb-3 justify-content-around">
+                        <div className="col-2">
                             <img src={character.thumbnail.path + '/detail.jpg'} className="shadow-lg" alt="" />
                         </div>
-                        <div className="col">
-                            { (character.description) ? <p className="mx-5 mt-2">{character.description}</p> : <p className="mx-5 mt-2">Character description not available</p>}
+                        <div className="col-6">
+                            { (character.description) ? <p className="mx-1 mt-2">{character.description}</p> : <p className="mx-2 mt-2">Character description not available</p>}
                         </div>
                     </div>
                     <div className="row justify-content-center">
-                        <h4 className="mt-5">{character.name} Appearances</h4>
+                        <h4 className="mt-4">{character.name} Appearances</h4>
                     </div>
                     <div className="row justify-content-center">
                         <div className="row mt-5 justify-content-center">
                             <Link to={`/charactercomics/${character.id}`} className="col">
-                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
-                                    <img src={comicbook} alt="" className="card-img-top" />
+                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0 shadow rounded character-img" >
+                                    <img src={comicbook} alt="Comics" className="card-img-top" />
                                     <div className="card-body">
                                         <h6 className="card-title bg-info text-white">Comics: {comicCount}</h6>
                                     </div>
                                 </div>
                             </Link>            
                             <div className="col">
-                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
-                                    <img src={event} alt="" className="card-img-top" />
+                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0 shadow rounded character-img" >
+                                    <img src={event} alt="Comic Events" className="card-img-top" />
                                     <div className="card-body">
                                         <h6 className="card-title bg-info text-white">Events: {eventCount}</h6>
                                     </div>
                                 </div>
                             </div>                   
                             <div className="col">
-                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0" >
-                                    <img src={seriesimg} alt="" className="card-img-top" />
+                                <div className="card d-inline-flex bg-info text-white justify-content-center p-0 m-0 shadow rounded character-img" >
+                                    <img src={seriesimg} alt="Comic Series" className="card-img-top" />
                                     <div className="card-body">
-                                        <h6 className="card-title bg-info text-white">Events: {seriesCount}</h6>
+                                        <h6 className="card-title bg-info text-white">Series: {seriesCount}</h6>
                                     </div>
                                 </div>
                             </div>   
