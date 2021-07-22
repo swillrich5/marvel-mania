@@ -54,10 +54,12 @@ const Character = ({ match }) => {
                 <div className="jumbotron">
                     <h1 className="mt-3 mb-4">{character.name}</h1>
                     <div className="row pb-3 justify-content-around">
-                        <div className="col-2">
-                            <img src={character.thumbnail.path + '/detail.jpg'} className="shadow-lg" alt="" />
+                        <div className="col">
+                            <img src={character.thumbnail.path + '/detail.jpg'} className="shadow-lg d-inline-flex" alt="" />
                         </div>
-                        <div className="col-6">
+                    </div>
+                    <div>
+                        <div className="col">
                             { (character.description) ? <p className="mx-1 mt-2">{character.description}</p> : <p className="mx-2 mt-2">Character description not available</p>}
                         </div>
                     </div>

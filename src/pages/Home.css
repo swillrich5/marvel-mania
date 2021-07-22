@@ -22,9 +22,16 @@ p {
     margin-top: 20px;
 }
 
-img {
+/* img {
     max-height: 288px;
     max-width: 250px;
+    transition: transform .5s; 
+} */
+
+
+img {
+    max-height: 100px;
+    max-width: 100px;
     transition: transform .5s; /* Animation */
 }
 

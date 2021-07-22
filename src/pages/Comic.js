@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'js-md5';
 import Spinner from '../components/Spinner';
+import './Comic.css';
 
 const Comic = ({ match }) => {
 
@@ -38,14 +39,14 @@ const Comic = ({ match }) => {
                 console.log(res.data);
                 console.log(res.data.data.results[0]);
                 setComic(res.data.data.results[0]);
-                console.log(res.data.data.results[0].thumbnail.path + '/portrait_incredible.jpg');
-                console.log(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
-                setPic(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
-                setLoading(false);
+                console.log(res.data.data.results[0].thumbnail.path + '/detail.jpg');
+                console.log(`${res.data.data.results[0].thumbnail.path}/detail.${res.data.data.results[0].thumbnail.extension}`);
+                setPic(`${res.data.data.results[0].thumbnail.path}/detail.${res.data.data.results[0].thumbnail.extension}`);
                 setCharacters(res.data.data.results[0].characters.items);
                 console.log(res.data.data.results[0].characters.items);
                 setVariants(res.data.data.results[0].variants);
                 setPrices(res.data.data.results[0].prices);
+                setLoading(false);
             }
             catch(err) {
                 console.log(err);
@@ -61,8 +62,8 @@ const Comic = ({ match }) => {
             <div className="container space-background">
             <div className="jumbotron">
                 <div className="row justify-content-center pb-3">
-                    <div className="col-4">
-                        <img src={pic} className="shadow-lg bg-white rounded" alt="pic"/>
+                    <div className="col">
+                        <img src={pic} className="shadow-lg rounded" alt="pic"/>
                     </div>
                 </div>
     
