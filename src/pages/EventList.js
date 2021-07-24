@@ -56,13 +56,11 @@ const EventList = () => {
                     </div>
                     <div className="row">
                         {events.map(event =>
-                            <Link to={`/event/${event.id}`} key={event.id} className='col-lg-4 col-md-6 col-sm-12 justify-content-around'>
-                                <div className="card mx-0 px-0 mb-3">
-                                    <div className="card-body mx-0 px-0">
-                                        <div className='row d-block align-content-center px-0 mx-0'>
-                                            <img className="mb-1 mx-0" src={event.thumbnail.path + '/portrait_uncanny.jpg'} alt="" />
-                                            <p className="text-center mt-2 pl-0">{event.title}</p>
-                                        </div>
+                            <Link to={`/event/${event.id}`} key={event.id} className='col mb-4'>
+                                <div className="card">
+                                    <img className="card-img-top" src={event.thumbnail.path + '/portrait_xlarge.jpg'} alt="" />
+                                    <div className="card-body">
+                                        <p className="card-text text-center mt-0">{event.title}</p>
                                     </div>
                                 </div>
                             </Link>
