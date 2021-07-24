@@ -61,7 +61,7 @@ const Comic = ({ match }) => {
         return (
             <div className="container space-background">
             <div className="jumbotron">
-                <div className="row justify-content-center pb-3">
+                <div className="row justify-content-center mt-3 pb-3">
                     <div className="col">
                         <img src={pic} className="shadow-lg rounded" alt="pic"/>
                     </div>
@@ -69,7 +69,7 @@ const Comic = ({ match }) => {
     
                 <div className="row justify-content-center pb-3">
                     <h4 className="text-center">{comic.title}</h4>
-                    {comic.description && <p className="mx-3 mt-2">{comic.description}</p>}
+                    {comic.description && <p className="mx-5 mt-2">{comic.description}</p>}
                 </div>
                 <div className="row justify-content-center mx-5">
                     <div className="col ml-5">
