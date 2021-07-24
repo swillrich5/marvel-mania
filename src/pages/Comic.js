@@ -69,9 +69,9 @@ const Comic = ({ match }) => {
     
                 <div className="row justify-content-center pb-3">
                     <h4 className="text-center">{comic.title}</h4>
-                    {comic.description && <p className="mx-5 mt-2">{comic.description}</p>}
+                    {comic.description && <p className="mx-3 mt-2">{comic.description}</p>}
                 </div>
-                <div className="row justify-content-center">
+                <div className="row justify-content-center mx-5">
                     <div className="col ml-5">
                         <h5 className="text-left">Characters in this issue:</h5>
                         {characters.map(character =>
@@ -82,6 +82,7 @@ const Comic = ({ match }) => {
                         )}
                     </div>
 
+                    {(variants.length > 0)  && 
                     <div className="col ml-2">
                         <h5 className="text-left">Variant Covers:</h5>
                         {variants.map(variant =>
@@ -90,7 +91,7 @@ const Comic = ({ match }) => {
                                 <li className="text-left"><Link to={`/comic/${/[^/]*$/.exec(variant.resourceURI)[0]}`} className="lead ml-3 my-0 py-0">{variant.name}</Link></li>
                             </ul>
                         )}
-                    </div>
+                    </div> }
                     <div className="col ml-2">
                         <h5 className="text-left">Pricing:</h5>
                         {prices.map(price =>
