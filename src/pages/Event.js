@@ -40,9 +40,9 @@ const Event = ({ match }) => {
                 console.log(res.data);
                 console.log(res.data.data.results[0]);
                 setEvent(res.data.data.results[0]);
-                console.log(res.data.data.results[0].thumbnail.path + '/portrait_incredible.jpg');
-                console.log(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
-                setPic(`${res.data.data.results[0].thumbnail.path}/portrait_incredible.${res.data.data.results[0].thumbnail.extension}`);
+                console.log(res.data.data.results[0].thumbnail.path + '/detail.jpg');
+                console.log(`${res.data.data.results[0].thumbnail.path}/detail.${res.data.data.results[0].thumbnail.extension}`);
+                setPic(`${res.data.data.results[0].thumbnail.path}/detail.${res.data.data.results[0].thumbnail.extension}`);
                 setLoading(false);
                 console.log(res.data.data.results[0].characters.items);
                 setComicCount(res.data.data.results[0].comics.available);
@@ -65,7 +65,7 @@ if (loading) {
             <div className="container space-background">
                 <div className="jumbotron">
                     <div className="row justify-content-center pb-3">
-                        <div className="col-4">
+                        <div className="col my-3">
                             <img src={pic} className="shadow-lg bg-white rounded" alt="pic"/>
                         </div>
                     </div>
