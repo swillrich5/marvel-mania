@@ -48,8 +48,6 @@ const CharacterResults = ({ characterName }) => {
 
             const ts = Number(new Date());      // timestamp for hash
             const hash = md5.create();
-            console.log(process.env.REACT_APP_PRIVATE_KEY);
-            console.log(process.env.REACT_APP_PUBLIC_KEY);
             hash.update(ts + process.env.REACT_APP_PRIVATE_KEY + process.env.REACT_APP_PUBLIC_KEY);
             console.log(hash);
 
