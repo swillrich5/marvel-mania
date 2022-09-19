@@ -1,6 +1,6 @@
 # marvel-mania
 
-marvel-mania is an application that explores the Mavel Comics API.  I'm using it to not only learn more about APIs, but also to build my React coding skills.  This app is still a work in progress, but it's far enough along for it to be useable.
+marvel-mania is an application that explores the Marvel Comics API.  I'm using it to not only learn more about APIs, but also to build my React coding skills.  This app is still a work in progress, but it's far enough along for it to be useable.
 
 ## Deployed Application
 https://marvel-mania-2021.herokuapp.com/
